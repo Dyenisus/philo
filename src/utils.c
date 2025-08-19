@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yesoytur <yesoytur@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/24 10:14:01 by yesoytur          #+#    #+#             */
-/*   Updated: 2025/07/24 10:39:59 by yesoytur         ###   ########.fr       */
+/*   Created: 2025/08/19 11:20:06 by yesoytur          #+#    #+#             */
+/*   Updated: 2025/08/19 12:01:25 by yesoytur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosophers.h"
+#include "../philo.h"
 
-
-// 5 - The number of philosophers
-// 800 - The time a philosopher will die if he doesn't eat
-// 200 - The time it takes a philosopher to eat
-// 200 - The time it takes a philosopher to sleep
-// 7 - Number of times all the philosophers need to eat before terminating the program optional argument
-
-int	main(int argc, char **argv)
+// Gets the current time as ms
+long	now_ms(void)
 {
-	;
+	struct timeval	tv;
+
+	gettimeofday(&tv, NULL);
+	return (tv.tv_sec * 1000L + tv.tv_usec / 1000L);
+}
+
+// Swaps two pointers
+void	ft_swap(void *p1, void *p2)
+{
+	void	*tmp;
+
+	ft_memcpy(&tmp, p1, sizeof(void *));
+	ft_memcpy(&p1, p2, sizeof(void *));
+	ft_memcpy(&p2, tmp, sizeof(void *));
 }
