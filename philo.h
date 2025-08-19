@@ -52,11 +52,28 @@ typedef struct s_philo
 /* --------- init --------- */
 
 void	init_cfg(t_cfg *cfg, long *list, int ac);
+int		init_sim(t_sim *sim, t_cfg cfg);
+int		init_philos(t_philo **philos, t_sim *sim);
+
+/* --------- free --------- */
+
+void	free_sim(t_sim *sim);
+int		join_philos(t_philo *p, int n);
+void	free_philos(t_philo **p);
+
+
+/* --------- print --------- */
+
+int		print_err(const char *msg);
+void	print_state(t_philo *p, const char *msg);
+void	print_dead_stop(t_philo *p);
 
 /* --------- utils --------- */
 
-int		print_err(const char *msg);
 long	now_ms(void);
 void	ft_swap(void *p1, void *p2);
+void	ms_sleep(long ms);
+int		get_dead(t_sim *sim);
+void	set_dead(t_sim *sim, int v);
 
 #endif
