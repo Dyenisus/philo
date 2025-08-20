@@ -6,7 +6,7 @@
 /*   By: yesoytur <yesoytur@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 17:44:28 by yesoytur          #+#    #+#             */
-/*   Updated: 2025/08/19 13:57:45 by yesoytur         ###   ########.fr       */
+/*   Updated: 2025/08/20 11:14:45 by yesoytur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	print_err(const char *msg)
 	return (1);
 }
 
+// Prints the given message for philos (think and sleep only)
 void	print_state(t_philo *p, const char *msg)
 {
 	long	ts;
@@ -39,6 +40,7 @@ void	print_state(t_philo *p, const char *msg)
 	pthread_mutex_unlock(&p->sim->m_print);
 }
 
+// Prints the given message for philos (dead only)
 void	print_dead_stop(t_philo *p)
 {
 	long	ts;

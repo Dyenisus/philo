@@ -11,7 +11,8 @@ OBJ_DIR := obj
 LIBFT := libft/libft.a
 
 MAIN_FILE := main.c
-SRC_FILES := 
+SRC_FILES := first_checks.c  forks.c  free.c  ft_atol.c  init.c  monitor.c  \
+	parse.c  print.c  routine.c  secondary_checks.c  utils.c
 
 MAIN_SRCS := $(addprefix $(MAIN_DIR)/, $(MAIN_FILE))
 SRCS := $(MAIN_SRCS) $(addprefix $(SRC_DIR)/, $(SRC_FILES))
@@ -40,12 +41,7 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 	$(MAKE) -C libft fclean || true
-	$(RM) valgrind_log.txt
 
 re: fclean all
 
-valgrind:
-	@echo "Philosophers initializing on valgrind mode..."
-	script -q -c "valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./philo" valgrind_log.txt
-
-.PHONY: all clean fclean re valgrind
+.PHONY: all clean fclean re

@@ -6,7 +6,7 @@
 /*   By: yesoytur <yesoytur@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:19:12 by yesoytur          #+#    #+#             */
-/*   Updated: 2025/08/19 12:55:33 by yesoytur         ###   ########.fr       */
+/*   Updated: 2025/08/20 19:54:32 by yesoytur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	join_philos(t_philo *p, int n)
 	int	fails;
 
 	if (!p)
-		return (print_err("NULL Philos"));
+		return (print_err("null philos"));
 	if (n <= 0)
 		return (0);
 	i = 0;
@@ -46,7 +46,7 @@ int	join_philos(t_philo *p, int n)
 			fails++;
 	}
 	if (fails)
-		return (print_err("Joining Threads Failed"));
+		return (print_err("pthread_join failed"));
 	return (0);
 }
 
@@ -57,4 +57,12 @@ void	free_philos(t_philo **p)
 		return ;
 	free(*p);
 	*p = NULL;
+}
+
+// Joins All Threads
+int	join_threads(pthread_t mon, t_philo *philos)
+{
+	if (pthread_join(mon, NULL) != 0)
+		return (print_err("monitor pthread_join failed"));
+	return (join_philos(philos, philos->sim->cfg.count));
 }

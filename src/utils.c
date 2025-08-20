@@ -6,7 +6,7 @@
 /*   By: yesoytur <yesoytur@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 11:20:06 by yesoytur          #+#    #+#             */
-/*   Updated: 2025/08/19 13:23:16 by yesoytur         ###   ########.fr       */
+/*   Updated: 2025/08/20 22:48:37 by yesoytur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,23 +22,28 @@ long	now_ms(void)
 }
 
 // Swaps two pointers
-void	ft_swap(void *p1, void *p2)
+void	ft_swap(pthread_mutex_t **a, pthread_mutex_t **b)
 {
-	void	*tmp;
+	pthread_mutex_t	*tmp;
 
-	ft_memcpy(&tmp, p1, sizeof(void *));
-	ft_memcpy(&p1, p2, sizeof(void *));
-	ft_memcpy(&p2, tmp, sizeof(void *));
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
 }
 
-// Sleeps untill ms time passes
-void	ms_sleep(long ms)
+// Smart sleeps untill ms time passes
+int	ms_sleep(t_sim *s, long ms)
 {
-	long	start;
+	long	end;
 
-	start = now_ms();
-	while (now_ms() - start < ms)
-		usleep(100);
+	end = now_ms() + ms;
+	while (now_ms() < end)
+	{
+		if (s && get_dead(s))
+			return (1);
+		usleep(1000);
+	}
+	return (0);
 }
 
 // Gets the dead value

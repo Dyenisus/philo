@@ -6,26 +6,26 @@
 /*   By: yesoytur <yesoytur@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 14:45:26 by yesoytur          #+#    #+#             */
-/*   Updated: 2025/08/19 10:24:43 by yesoytur         ###   ########.fr       */
+/*   Updated: 2025/08/20 18:45:50 by yesoytur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
 
 // Converts the arguments to the list
-static long	*conv_to_nbr_list(int argc, char **argv)
+static long	*conv_to_nbr_list(int ac, char **av)
 {
 	long	*list;
 	int		i;
 	int		ok;
 
-	list = malloc(sizeof(long) * (argc - 1));
+	list = malloc(sizeof(long) * (ac - 1));
 	if (!list)
 		return (NULL);
 	i = 0;
-	while (++argv, --argc)
+	while (++av, --ac)
 	{
-		list[i] = ft_atol(*argv, &ok);
+		list[i] = ft_atol(*av, &ok);
 		if (!ok)
 			return (free(list), NULL);
 		i++;
@@ -33,17 +33,24 @@ static long	*conv_to_nbr_list(int argc, char **argv)
 	return (list);
 }
 
-// Checks and Prepares arguments and converts them to long *list
-long	*prep(int argc, char **argv)
+// Checks and Prepares arguments
+int	prep(int ac, char **av, t_sim *sim, t_philo **philos)
 {
 	long	*list;
+	t_cfg	cfg;
 
-	if (!first_checks(argc, argv))
-		return (NULL);
-	list = conv_to_nbr_list(argc, argv);
+	if (!first_checks(ac, av))
+		return (print_err("first_checks failed"));
+	list = conv_to_nbr_list(ac, av);
 	if (!list)
-		return (NULL);
-	if (!secondary_checks(argc, list))
-		return (free(list), NULL);
-	return (list);
+		return (print_err("conv_to_nbr_list failed"));
+	if (!secondary_checks(ac, list))
+		return (free(list), print_err("secondary_checks failed"));
+	init_cfg(&cfg, list, ac);
+	free(list);
+	if (init_sim(sim, cfg))
+		return (print_err("init_sim failed"));
+	if (init_philos(philos, sim))
+		return (free_sim(sim), print_err("init_philo failed"));
+	return (0);
 }
