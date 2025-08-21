@@ -6,7 +6,7 @@
 /*   By: yesoytur <yesoyturstudent.42istanbul.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 13:08:51 by yesoytur          #+#    #+#             */
-/*   Updated: 2025/08/21 14:07:57 by yesoytur         ###   ########.fr       */
+/*   Updated: 2025/08/21 14:15:04 by yesoytur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	do_sleep(t_philo *p)
 static void	do_think(t_philo *p)
 {
 	print_state(p, "is thinking");
-	(void)ms_sleep(p->sim, 100);
+	(void)ms_sleep(p->sim, 1);
 }
 
 void	*philo_routine(void *philos)
