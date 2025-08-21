@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yesoytur <yesoytur@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: yesoytur <yesoyturstudent.42istanbul.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 13:08:51 by yesoytur          #+#    #+#             */
-/*   Updated: 2025/08/20 23:12:37 by yesoytur         ###   ########.fr       */
+/*   Updated: 2025/08/21 14:07:57 by yesoytur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 static void	delay_time(t_philo *p)
 {
 	while (now_ms() < p->sim->start_ms)
-   		usleep(100);
+		usleep(100);
 	if (p->id % 2 == 0)
-    	usleep(1000);
+		usleep(1000);
 }
 
 static int	do_eat(t_philo *p)
@@ -44,7 +44,7 @@ static void	do_sleep(t_philo *p)
 static void	do_think(t_philo *p)
 {
 	print_state(p, "is thinking");
-	(void)ms_sleep(p->sim, 1);
+	(void)ms_sleep(p->sim, 100);
 }
 
 void	*philo_routine(void *philos)
@@ -59,16 +59,6 @@ void	*philo_routine(void *philos)
 			break ;
 		if (get_dead(p->sim))
 			break ;
-		if (p->sim->cfg.must_eat > 0)
-		{
-			pthread_mutex_lock(&p->sim->m_meal);
-			if (p->meals >= p->sim->cfg.must_eat)
-			{
-				pthread_mutex_unlock(&p->sim->m_meal);
-				break ;
-			}
-			pthread_mutex_unlock(&p->sim->m_meal);
-		}
 		do_sleep(p);
 		do_think(p);
 	}

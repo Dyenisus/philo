@@ -3,22 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   first_checks.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yesoytur <yesoytur@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: yesoytur <yesoyturstudent.42istanbul.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 10:41:09 by yesoytur          #+#    #+#             */
-/*   Updated: 2025/08/19 10:27:18 by yesoytur         ###   ########.fr       */
+/*   Updated: 2025/08/21 14:06:25 by yesoytur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
 
-// Checks argument count 
 static int	count_check(int argc)
 {
 	return (argc == 5 || argc == 6);
 }
 
-// Checks if given arguments are digits
 static int	argv_int_check(char **argv)
 {
 	char	*str;
@@ -42,7 +40,6 @@ static int	argv_int_check(char **argv)
 	return (1);
 }
 
-// Firsthand checks before conversion
 int	first_checks(int argc, char **argv)
 {
 	return (count_check(argc) && argv_int_check(argv));

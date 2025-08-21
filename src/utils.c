@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yesoytur <yesoytur@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: yesoytur <yesoyturstudent.42istanbul.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 11:20:06 by yesoytur          #+#    #+#             */
-/*   Updated: 2025/08/20 22:48:37 by yesoytur         ###   ########.fr       */
+/*   Updated: 2025/08/21 14:07:38 by yesoytur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
 
-// Gets the current time as ms
 long	now_ms(void)
 {
 	struct timeval	tv;
@@ -21,7 +20,6 @@ long	now_ms(void)
 	return (tv.tv_sec * 1000L + tv.tv_usec / 1000L);
 }
 
-// Swaps two pointers
 void	ft_swap(pthread_mutex_t **a, pthread_mutex_t **b)
 {
 	pthread_mutex_t	*tmp;
@@ -31,7 +29,6 @@ void	ft_swap(pthread_mutex_t **a, pthread_mutex_t **b)
 	*b = tmp;
 }
 
-// Smart sleeps untill ms time passes
 int	ms_sleep(t_sim *s, long ms)
 {
 	long	end;
@@ -46,7 +43,6 @@ int	ms_sleep(t_sim *s, long ms)
 	return (0);
 }
 
-// Gets the dead value
 int	get_dead(t_sim *sim)
 {
 	int	v;
@@ -57,7 +53,6 @@ int	get_dead(t_sim *sim)
 	return (v);
 }
 
-// Gets the dead value
 void	set_dead(t_sim *sim, int v)
 {
 	pthread_mutex_lock(&sim->m_dead);

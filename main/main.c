@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yesoytur <yesoytur@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: yesoytur <yesoyturstudent.42istanbul.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 10:19:19 by yesoytur          #+#    #+#             */
-/*   Updated: 2025/08/20 21:28:08 by yesoytur         ###   ########.fr       */
+/*   Updated: 2025/08/21 14:05:49 by yesoytur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
 
-static int start_monitor(t_philo *p, pthread_t *mon)
+static int	start_monitor(t_philo *p, pthread_t *mon)
 {
-    if (pthread_create(mon, NULL, monitor_routine, p) != 0)
-        return (print_err("monitor pthread_create failed"));
-    return (0);
+	if (pthread_create(mon, NULL, monitor_routine, p) != 0)
+		return (print_err("monitor pthread_create failed"));
+	return (0);
 }
 
 static int	start_threads(t_philo *p, int n)
@@ -28,7 +28,7 @@ static int	start_threads(t_philo *p, int n)
 	p->sim->start_ms = now_ms() + 250;
 	i = 0;
 	while (i < p->sim->cfg.count)
-    	p[i++].last_meal = p->sim->start_ms;
+		p[i++].last_meal = p->sim->start_ms;
 	i = 0;
 	while (i < n)
 	{

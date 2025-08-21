@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yesoytur <yesoytur@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: yesoytur <yesoyturstudent.42istanbul.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 12:19:12 by yesoytur          #+#    #+#             */
-/*   Updated: 2025/08/20 19:54:32 by yesoytur         ###   ########.fr       */
+/*   Updated: 2025/08/21 14:06:37 by yesoytur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
 
-// Frees Sim Struct
 void	free_sim(t_sim *sim)
 {
 	int	i;
@@ -28,7 +27,6 @@ void	free_sim(t_sim *sim)
 	pthread_mutex_destroy(&sim->m_print);
 }
 
-// Joins Philo threads
 int	join_philos(t_philo *p, int n)
 {
 	int	i;
@@ -50,7 +48,6 @@ int	join_philos(t_philo *p, int n)
 	return (0);
 }
 
-// Frees Philo Struct
 void	free_philos(t_philo **p)
 {
 	if (!p || !*p)
@@ -59,7 +56,6 @@ void	free_philos(t_philo **p)
 	*p = NULL;
 }
 
-// Joins All Threads
 int	join_threads(pthread_t mon, t_philo *philos)
 {
 	if (pthread_join(mon, NULL) != 0)

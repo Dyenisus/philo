@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yesoytur <yesoyturstudent.42istanbul.co    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/21 14:02:37 by yesoytur          #+#    #+#             */
+/*   Updated: 2025/08/21 14:03:56 by yesoytur         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PHILO_H
 # define PHILO_H
 
@@ -5,11 +17,9 @@
 # include <sys/time.h>
 # include <stdio.h>
 # include <limits.h>
-# include "libft/libft.h"
+# include <unistd.h>
+# include <stdlib.h>
 
-/* ------------- structs ------------- */
-
-// Configurations Struct
 typedef struct s_cfg
 {
 	int	count;
@@ -19,7 +29,6 @@ typedef struct s_cfg
 	int	must_eat;
 }	t_cfg;
 
-// Simulation Struct
 typedef struct s_sim
 {
 	t_cfg			cfg;
@@ -31,7 +40,6 @@ typedef struct s_sim
 	pthread_mutex_t	*forks;
 }	t_sim;
 
-// Philosopher Struct
 typedef struct s_philo
 {
 	int				id;
@@ -43,52 +51,29 @@ typedef struct s_philo
 	t_sim			*sim;
 }	t_philo;
 
-/* --------- parse --------- */
-
 int		prep(int ac, char **av, t_sim *sim, t_philo **philos);
 int		first_checks(int argc, char **argv);
 int		secondary_checks(int argc, long *list);
 long	ft_atol(const char *s, int *ok);
-
-/* --------- init --------- */
-
+int		ft_isdigit(int c);
 void	init_cfg(t_cfg *cfg, long *list, int ac);
 int		init_sim(t_sim *sim, t_cfg cfg);
 int		init_philos(t_philo **philos, t_sim *sim);
-
-/* --------- free --------- */
-
 void	free_sim(t_sim *sim);
 int		join_philos(t_philo *p, int n);
 void	free_philos(t_philo **p);
 int		join_threads(pthread_t mon, t_philo *philos);
-
-/* --------- print --------- */
-
 int		print_err(const char *msg);
 void	print_state(t_philo *p, const char *msg);
 void	print_dead_stop(t_philo *p);
-
-/* --------- utils --------- */
-
 long	now_ms(void);
 void	ft_swap(pthread_mutex_t **a, pthread_mutex_t **b);
 int		ms_sleep(t_sim *s, long ms);
 int		get_dead(t_sim *sim);
 void	set_dead(t_sim *sim, int v);
-
-/* --------- forks --------- */
-
 int		take_forks(t_philo *p);
 void	drop_forks(t_philo *p);
-
-/* --------- routine --------- */
-
 void	*philo_routine(void *philos);
-
-/* --------- monitor --------- */
-
 void	*monitor_routine(void *philos);
-
 
 #endif

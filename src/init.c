@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yesoytur <yesoytur@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: yesoytur <yesoyturstudent.42istanbul.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 10:40:04 by yesoytur          #+#    #+#             */
-/*   Updated: 2025/08/20 22:50:49 by yesoytur         ###   ########.fr       */
+/*   Updated: 2025/08/21 14:06:49 by yesoytur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
 
-// Inits and assigns the values to Configuration Struct
 void	init_cfg(t_cfg *cfg, long *list, int ac)
 {
 	(*cfg).count = list[0];
@@ -47,7 +46,6 @@ static int	init_forks(t_sim *sim)
 	return (0);
 }
 
-// Inits and assigns the values to Simulation Struct
 int	init_sim(t_sim *sim, t_cfg cfg)
 {
 	if ((pthread_mutex_init(&sim->m_dead, NULL)) != 0)
@@ -64,7 +62,6 @@ int	init_sim(t_sim *sim, t_cfg cfg)
 	return (0);
 }
 
-// Inits and assigns the values of Philosphers Struct
 int	init_philos(t_philo **philos, t_sim *sim)
 {
 	int				i;

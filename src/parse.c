@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yesoytur <yesoytur@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: yesoytur <yesoyturstudent.42istanbul.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 14:45:26 by yesoytur          #+#    #+#             */
-/*   Updated: 2025/08/20 18:45:50 by yesoytur         ###   ########.fr       */
+/*   Updated: 2025/08/21 14:07:03 by yesoytur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
 
-// Converts the arguments to the list
 static long	*conv_to_nbr_list(int ac, char **av)
 {
 	long	*list;
@@ -33,7 +32,6 @@ static long	*conv_to_nbr_list(int ac, char **av)
 	return (list);
 }
 
-// Checks and Prepares arguments
 int	prep(int ac, char **av, t_sim *sim, t_philo **philos)
 {
 	long	*list;

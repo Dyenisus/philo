@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   monitor.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yesoytur <yesoytur@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: yesoytur <yesoyturstudent.42istanbul.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 14:49:03 by yesoytur          #+#    #+#             */
-/*   Updated: 2025/08/20 18:11:26 by yesoytur         ###   ########.fr       */
+/*   Updated: 2025/08/21 14:06:54 by yesoytur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

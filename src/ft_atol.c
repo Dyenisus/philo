@@ -3,22 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yesoytur <yesoytur@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: yesoytur <yesoyturstudent.42istanbul.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 14:22:14 by yesoytur          #+#    #+#             */
-/*   Updated: 2025/08/19 10:28:51 by yesoytur         ###   ########.fr       */
+/*   Updated: 2025/08/21 14:06:14 by yesoytur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
 
-// Just a silly helper isspace
+int	ft_isdigit(int c)
+{
+	return (c >= '0' && c <= '9');
+}
+
 static int	ft_isspace(int c)
 {
 	return ((c >= '\t' && c <= '\r') || c == ' ');
 }
 
-// Project specified version of atol
 long	ft_atol(const char *s, int *ok)
 {
 	long	res;
